@@ -2,4 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(reqest):
-    return HttpResponse('Это мой первый сайт')
+    return render(reqest, 'index.html')
+def top_sellers(reqest):
+    return render(reqest, 'top-sellers.html')
