@@ -18,8 +18,4 @@ class AdvertisementAdmin(admin.ModelAdmin):
 
 
 
-
-
-
-
 admin.site.register(Advertisement, AdvertisementAdmin)
