@@ -7,16 +7,14 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 class Advertisement(models.Model):
-    title = models.CharField('Заголовок', max_length=128)
+    title = models.CharField('Заголовок', max_length= 12 )
     description = models.TextField('Описание')
     price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
-    auction = models.BooleanField('Торг', help_text='Отьметьте, если торг уместен')
-    created_at = models.DateTimeField('Дата и время создания', auto_now_add=True)
-    updated_at = models.DateTimeField('Дата и время изменения', auto_now=True)
+    auction = models.BooleanField('торг', help_text='Отметьте, если торг уместен')
+    created_at= models.DateTimeField('Дата и время создания', auto_now_add=True)
+    updatet_at = models.DateTimeField('Дата и время изменения', auto_now=True)
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
-    image = models.ImageField('Изображение', upload_to='advertisements/')
-
-
+    image = models.ImageField('Изображение',upload_to='advertisements/')
     @admin.display(description='Дата создания')
     def created_date(self):
         if self.created_at.date() == timezone.now().date():
@@ -46,3 +44,6 @@ class Advertisement(models.Model):
 
     class Meta:
         db_table = 'advertisements'
+
+
+
