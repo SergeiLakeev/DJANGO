@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import ExtendedUserCreationForm
 
-def login_view(request):
+def login(request):
     redirect_url = reverse('main_page')
     if request.method == 'GET':
         if request.user.is_authenticated:
@@ -24,16 +24,16 @@ def login_view(request):
 
 
 @login_required(login_url=reverse_lazy('login'))
-def profile_view(request):
+def profile(request):
     return render(request, 'app_auth/profile.html')
 
 
-def logout_view(request):
+def logout(request):
     logout(request)
     return redirect(reverse('login'))
 
 
-def register_view(request):
+def register(request):
     if request.method == "POST":
         form = ExtendedUserCreationForm(request.POST)
         if form.is_valid():
